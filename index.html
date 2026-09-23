@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonix — Free High-Fidelity Music Player | Stream, Lyrics & Downloads</title>
+    <meta name="description"
+        content="Sonix is a free, premium music player with high-fidelity streaming up to 320kbps, real-time synced lyrics, sleep timer, offline liked songs, and dynamic album art theming. Download now.">
+    <meta name="keywords"
+        content="Sonix, music player, free music, hi-fi streaming, synced lyrics, 320kbps, sleep timer, music app">
+    <meta name="author" content="Shikhar Yadav">
+    <meta property="og:title" content="Sonix — Free High-Fidelity Music Player">
+    <meta property="og:description"
+        content="Stream millions of songs in stunning quality. Real-time lyrics, sleep timer, offline favorites — all for free.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="assets/logo/logo.jpg" type="image/jpeg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Three.js Canvas Background -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Ambient Glow Blobs -->
+    <div class="ambient-glow">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+        <div class="glow-blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" aria-label="Sonix Home">
+                <img src="assets/logo/logo.jpg" alt="Sonix Logo" class="nav-logo-img">
+                <span class="nav-logo-text">Sonix</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#screenshots" class="nav-link">Preview</a>
+                <a href="#quality" class="nav-link">Audio Quality</a>
+                <a href="#download" class="nav-link">Download</a>
+            </div>
+            <a href="https://github.com/shikharyadav16" target="_blank" rel="noopener noreferrer"
+                class="nav-download-btn" id="nav-cta">
+                <i class="ph ph-github-logo"></i>
+                <span>Get Sonix</span>
+            </a>
+            <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="#screenshots" class="mobile-link">Preview</a>
+            <a href="#quality" class="mobile-link">Audio Quality</a>
+            <a href="#download" class="mobile-link">Download</a>
+            <a href="https://github.com/shikharyadav16" target="_blank" rel="noopener noreferrer"
+                class="mobile-link download">
+                <i class="ph ph-github-logo"></i> Get Sonix
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <!-- ====== HERO SECTION ====== -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge reveal-up">
+                    <i class="ph ph-sparkle"></i>
+                    <span>100% Free — No Ads, No Subscriptions</span>
+                </div>
+                <h1 class="hero-title reveal-up">
+                    Feel Every Beat<br>
+                    <span class="gradient-text">Like Never Before</span>
+                </h1>
+                <p class="hero-subtitle reveal-up">
+                    Sonix delivers crystal-clear audio up to 320kbps with real-time synced lyrics,
+                    dynamic album art theming, and a beautiful player — all completely free.
+                </p>
+                <div class="hero-actions reveal-up">
+                    <a href="https://github.com/shikharyadav16" target="_blank" rel="noopener noreferrer"
+                        class="btn-primary" id="hero-download">
+                        <i class="ph ph-download-simple"></i>
+                        <span>Download Now</span>
+                    </a>
+                    <a href="#features" class="btn-secondary" id="hero-explore">
+                        <i class="ph ph-arrow-down"></i>
+                        <span>Explore Features</span>
+                    </a>
+                </div>
+                <div class="hero-stats reveal-up">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="320">0</span><span class="stat-suffix">kbps</span>
+                        <span class="stat-label">Max Quality</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
+                        <span class="stat-label">Free Forever</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="0">∞</span>
+                        <span class="stat-label">Songs Available</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual reveal-up">
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <img src="assets/screenshots/player.png" alt="Sonix Player" class="phone-screen"
+                            loading="eager">
+                    </div>
+                    <div class="phone-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== FEATURES SECTION ====== -->
+        <section id="features" class="features-section">
+            <div class="section-container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag"><i class="ph ph-lightning"></i> Packed With Power</span>
+                    <h2 class="section-title">Everything You Need.<br><span class="gradient-text">Nothing You
+                            Don't.</span></h2>
+                    <p class="section-subtitle">A music player designed with obsessive attention to detail — every
+                        feature is built for the pure joy of listening.</p>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Feature 1: Hi-Fi Streaming -->
+                    <div class="feature-card feature-card-large reveal-up" id="feature-hifi">
+                        <div class="feature-icon-wrap">
+                            <i class="ph ph-waveform"></i>
+                        </div>
+                        <h3 class="feature-title">Hi-Fi Audio Streaming</h3>
+                        <p class="feature-desc">Stream and download in crystal-clear quality. Choose from 48kbps to
+                            320kbps — your preference is saved forever.</p>
+                        <div class="bitrate-chips">
+                            <span class="chip chip-active">320 kbps</span>
+                            <span class="chip">160 kbps</span>
+                            <span class="chip">96 kbps</span>
+                            <span class="chip">48 kbps</span>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: Synced Lyrics -->
+                    <div class="feature-card reveal-up" id="feature-lyrics">
+                        <div class="feature-icon-wrap icon-cyan">
+                            <i class="ph ph-text-aa"></i>
+                        </div>
+                        <h3 class="feature-title">Real-Time Lyrics</h3>
+                        <p class="feature-desc">Auto-scrolling synced lyrics follow every word. Tap any line to seek.
+                            Full-screen or sheet mode.</p>
+                    </div>
+
+                    <!-- Feature 3: Sleep Timer -->
+                    <div class="feature-card reveal-up" id="feature-timer">
+                        <div class="feature-icon-wrap icon-amber">
+                            <i class="ph ph-timer"></i>
+                        </div>
+                        <h3 class="feature-title">Sleep Timer</h3>
+                        <p class="feature-desc">Quick presets (15m–2hr) or custom input. Live countdown badge. Music
+                            pauses gracefully when time's up.</p>
+                    </div>
+
+                    <!-- Feature 4: Liked Songs -->
+                    <div class="feature-card reveal-up" id="feature-liked">
+                        <div class="feature-icon-wrap icon-rose">
+                            <i class="ph ph-heart"></i>
+                        </div>
+                        <h3 class="feature-title">Liked Songs Library</h3>
+                        <p class="feature-desc">Instant heart toggle. Songs saved offline forever. Dedicated library
+                            with Play All, Shuffle, and full queue support.</p>
+                    </div>
+
+                    <!-- Feature 5: Dynamic Theming -->
+                    <div class="feature-card feature-card-large reveal-up" id="feature-theming">
+                        <div class="feature-icon-wrap icon-emerald">
+                            <i class="ph ph-palette"></i>
+                        </div>
+                        <h3 class="feature-title">Dynamic Album Art Theming</h3>
+                        <p class="feature-desc">The entire player transforms with each song. Real-time palette
+                            extraction drives animated ambient gradients — making every track feel alive.</p>
+                        <div class="theme-preview">
+                            <div class="theme-dot" style="background: #7C3AED;"></div>
+                            <div class="theme-dot" style="background: #06B6D4;"></div>
+                            <div class="theme-dot" style="background: #F43F5E;"></div>
+                            <div class="theme-dot" style="background: #10B981;"></div>
+                            <div class="theme-dot" style="background: #F59E0B;"></div>
+                            <div class="theme-dot" style="background: #3B82F6;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 6: Search -->
+                    <div class="feature-card reveal-up" id="feature-search">
+                        <div class="feature-icon-wrap icon-blue">
+                            <i class="ph ph-magnifying-glass"></i>
+                        </div>
+                        <h3 class="feature-title">Instant Search</h3>
+                        <p class="feature-desc">Search millions of songs, albums, and playlists. Smart queue keeps the
+                            music flowing with auto-recommendations.</p>
+                    </div>
+
+                    <!-- Feature 7: Downloads -->
+                    <!-- <div class="feature-card reveal-up" id="feature-downloads">
+                        <div class="feature-icon-wrap icon-teal">
+                            <i class="ph ph-download-simple"></i>
+                        </div>
+                        <h3 class="feature-title">Download Audio</h3>
+                        <p class="feature-desc">Grab any track in high quality up to 320kbps directly to your device. Available from the 3-dot song menu.</p>
+                    </div> -->
+
+                    <!-- Feature 8: Onboarding -->
+                    <!-- <div class="feature-card reveal-up" id="feature-onboarding">
+                        <div class="feature-icon-wrap icon-violet">
+                            <i class="ph ph-user-circle"></i>
+                        </div>
+                        <h3 class="feature-title">Personalized Profile</h3>
+                        <p class="feature-desc">Welcome flow captures your name. Compact avatar menu with quick access to Liked Songs & Settings anytime.</p>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SCREENSHOTS SHOWCASE ====== -->
+        <section id="screenshots" class="screenshots-section">
+            <div class="section-container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag"><i class="ph ph-device-mobile"></i> App Preview</span>
+                    <h2 class="section-title">See Sonix <span class="gradient-text">In Action</span></h2>
+                    <p class="section-subtitle">A glimpse into the beautifully crafted experience awaiting you.</p>
+                </div>
+
+                <div class="screenshots-fan reveal-up">
+                    <!-- Left phone — Home (tilted) -->
+                    <div class="fan-phone fan-left">
+                        <div class="fan-frame">
+                            <div class="fan-notch"></div>
+                            <img src="assets/screenshots/home.png" alt="Sonix Home Screen" loading="lazy">
+                        </div>
+                        <span class="fan-label">Home</span>
+                    </div>
+
+                    <!-- Center phone — Player (hero) -->
+                    <div class="fan-phone fan-center">
+                        <div class="fan-frame">
+                            <div class="fan-notch"></div>
+                            <img src="assets/screenshots/player.png" alt="Sonix Full Player" loading="lazy">
+                        </div>
+                        <div class="fan-center-glow"></div>
+                        <span class="fan-label">Player</span>
+                    </div>
+
+                    <!-- Right phone — Lyrics (tilted) -->
+                    <div class="fan-phone fan-right">
+                        <div class="fan-frame">
+                            <div class="fan-notch"></div>
+                            <img src="assets/screenshots/lyrics.png" alt="Sonix Lyrics View" loading="lazy">
+                        </div>
+                        <span class="fan-label">Lyrics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== AUDIO QUALITY SECTION ====== -->
+        <section id="quality" class="quality-section">
+            <div class="section-container">
+                <div class="quality-layout">
+                    <div class="quality-text reveal-up">
+                        <span class="section-tag"><i class="ph ph-speaker-high"></i> Audio Excellence</span>
+                        <h2 class="section-title">Your Music,<br><span class="gradient-text">Your Rules</span></h2>
+                        <p class="section-subtitle">Choose the streaming quality that matches your ears and your
+                            connection. Sonix remembers your preference forever.</p>
+                    </div>
+                    <div class="quality-cards reveal-up">
+                        <div class="quality-card quality-best" id="quality-320">
+                            <div class="quality-badge">Recommended</div>
+                            <div class="quality-kbps">320</div>
+                            <div class="quality-unit">kbps</div>
+                            <div class="quality-name">Very High</div>
+                            <p class="quality-info">Maximum fidelity. Rich bass, crystal mids, sparkling highs.</p>
+                            <div class="quality-bar">
+                                <div class="quality-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="quality-card" id="quality-160">
+                            <div class="quality-kbps">160</div>
+                            <div class="quality-unit">kbps</div>
+                            <div class="quality-name">High</div>
+                            <p class="quality-info">Balanced quality and data usage.</p>
+                            <div class="quality-bar">
+                                <div class="quality-fill" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="quality-card" id="quality-96">
+                            <div class="quality-kbps">96</div>
+                            <div class="quality-unit">kbps</div>
+                            <div class="quality-name">Medium</div>
+                            <p class="quality-info">Efficient streaming. Data saver mode.</p>
+                            <div class="quality-bar">
+                                <div class="quality-fill" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="quality-card" id="quality-48">
+                            <div class="quality-kbps">48</div>
+                            <div class="quality-unit">kbps</div>
+                            <div class="quality-name">Low</div>
+                            <p class="quality-info">Minimal bandwidth for slow connections.</p>
+                            <div class="quality-bar">
+                                <div class="quality-fill" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== DOWNLOAD CTA SECTION ====== -->
+        <section id="download" class="download-section">
+            <div class="section-container">
+                <div class="download-card reveal-up">
+                    <div class="download-bg-effects">
+                        <div class="dl-blob dl-blob-1"></div>
+                        <div class="dl-blob dl-blob-2"></div>
+                    </div>
+                    <div class="download-content">
+                        <img src="assets/logo/logo.jpg" alt="Sonix Logo" class="download-logo">
+                        <h2 class="download-title">Ready to Experience<br><span class="gradient-text">Sonix?</span></h2>
+                        <p class="download-subtitle">Free. Forever. No catches. Just pure, beautiful music.</p>
+                        <a href="https://github.com/shikharyadav16" target="_blank" rel="noopener noreferrer"
+                            class="btn-primary btn-large" id="cta-download">
+                            <i class="ph ph-github-logo"></i>
+                            <span>Download Now</span>
+                        </a>
+                        <div class="download-features">
+                            <span><i class="ph ph-check-circle"></i> No Ads</span>
+                            <span><i class="ph ph-check-circle"></i> No Subscription</span>
+                            <span><i class="ph ph-check-circle"></i> Open Source</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="assets/logo/logo.jpg" alt="Sonix" class="footer-logo">
+                    <span class="footer-brand-name">Sonix</span>
+                    <p class="footer-tagline">Feel Every Beat Like Never Before.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Navigate</h4>
+                    <a href="#features">Features</a>
+                    <a href="#screenshots">Preview</a>
+                    <a href="#quality">Audio Quality</a>
+                    <a href="#download">Download</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>App Features</h4>
+                    <a href="#feature-hifi">Hi-Fi Streaming</a>
+                    <a href="#feature-lyrics">Synced Lyrics</a>
+                    <a href="#feature-timer">Sleep Timer</a>
+                    <a href="#feature-liked">Liked Songs</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Connect</h4>
+                    <a href="https://github.com/shikharyadav16" target="_blank" rel="noopener noreferrer">
+                        <i class="ph ph-github-logo"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sonix. Built with <i class="ph ph-heart-fill" style="color: #F43F5E;"></i> by Shikhar
+                    Yadav.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
